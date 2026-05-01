@@ -1,0 +1,11 @@
+[Unit]
+Description=Fetch and pull git repository changes
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/systemd/user/git-pull.sh
+
+[Install]
+WantedBy=multi-user.target
