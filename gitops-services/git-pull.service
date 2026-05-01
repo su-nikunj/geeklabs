@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=%h/.config/systemd/user/git-pull.sh
+ExecStart=%h/.config/containers/systemd/git-pull.sh
 
 [Install]
 WantedBy=multi-user.target

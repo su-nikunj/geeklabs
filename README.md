@@ -8,3 +8,9 @@ I also created a simple GitOps workflow by just running a systemd timer that fre
 1. Enable linger for current user, `loginctl enable-linger`, and also enable podman auto-update timer using `systemctl --user enable --now podman-auto-update.timer`.
 2. Clone the repo in `~/.config/containers/systemd` folder.
 3. Run the `init.sh` script.
+4. On RHEL systems, enable persistent logging for ease of debugging using the following commands
+```bash
+sudo mkdir /var/log/journal
+sudo systemd-tmpfiles --create
+sudo journalctl --flush
+```
