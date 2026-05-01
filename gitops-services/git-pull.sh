@@ -14,18 +14,15 @@ check_latest_commit() {
             case $status in
                 A)
                     echo "New service $filename"
-                    systemctl daemon-reload
-                    systemctl --user enable --now $filename
+                    systemctl --user start $filename
                     ;;
                 M)
                     echo "Modified service $filename"
-                    systemctl daemon-reload
                     systemctl --user restart $filename
                     ;;
                 D)
                     echo "Deleted service $filename"
-                    systemctl --user disable --now $filename
-                    systemctl --user daemon-reload
+                    systemctl --user stop $filename
             esac
         fi
     done
@@ -45,6 +42,7 @@ if [ $LOCAL = $REMOTE ]; then
 elif [ $LOCAL = $BASE ]; then
     echo "Changes detected. Pulling now..."
     git merge --ff-only
+    systemctl daemon-reload
     check_latest_commit
 elif [ $REMOTE = $BASE ]; then
     echo "Local is ahead of remote. No pull needed."
