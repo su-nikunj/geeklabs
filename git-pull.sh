@@ -1,7 +1,5 @@
 #!/bin/bash
 
-pwd
-
 check_latest_commit() {
     # Use git diff-tree to compare the latest commit with its parent
     # -r: recurse into subdirectories

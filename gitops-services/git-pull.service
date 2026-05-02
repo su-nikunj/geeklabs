@@ -5,6 +5,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
+WorkingDirectory=%h/.config/containers/systemd/geeklabs
 ExecStart=%h/.config/containers/systemd/geeklabs/git-pull.sh
 
 [Install]
